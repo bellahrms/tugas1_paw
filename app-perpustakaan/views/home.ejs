@@ -1,0 +1,15 @@
+<img src="./img/eric.jpg" alt="">
+<h4 class="mb-4">Daftar Buku</h4>
+<div class="row">
+    <% buku.forEach(data => { %>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title text-lg font-bold"><%= data.buku %></h5>
+                    <p class="card-text text-gray-700"><%= data.cerita %></p>
+                    <button class="btn btn-primary">Selengkapnya</button>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
