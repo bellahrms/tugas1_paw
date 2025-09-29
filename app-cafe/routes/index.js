@@ -1,15 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-/* ========================
-   ROUTE HALAMAN UTAMA
-======================== */
+/* GET home page. */
 router.get('/', function(req, res, next) {
   // Data minuman yang ditampilkan di halaman home
   const minuman = [
-      { nama: "Cappuccino", deskripsi: "Kopi dengan busa susu yang lembut" },
-      { nama: "Matcha Latte", deskripsi: "Perpaduan teh hijau matcha dengan susu" },
-      { nama: "Caramel Macchiato", deskripsi: "Kopi dengan sentuhan caramel manis" }
+      {
+          nama: "Cappuccino",
+          deskripsi: "Kopi dengan busa susu yang lembut"
+      },
+      {
+          nama: "Matcha Latte",
+          deskripsi: "Perpaduan teh hijau matcha dengan susu"
+      },
+      {
+          nama: "Caramel Macchiato",
+          deskripsi: "Kopi dengan sentuhan caramel manis"
+      }
   ];
 
   res.render('home', { 
@@ -19,9 +26,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* ========================
-   ROUTE HALAMAN ABOUT
-======================== */
+// About Page
 router.get('/about', function(req, res, next) {
   res.render('about', { 
       title: 'Halaman About', 
@@ -29,9 +34,7 @@ router.get('/about', function(req, res, next) {
   });
 });
 
-/* ========================
-   ROUTE HALAMAN CONTACT
-======================== */
+// Contact Page
 router.get('/contact', function(req, res, next) {
   res.render('contact', { 
       title: 'Halaman Contact', 
@@ -39,9 +42,7 @@ router.get('/contact', function(req, res, next) {
   });
 });
 
-/* ========================
-   ROUTE HALAMAN MINUMAN
-======================== */
+// Daftar Minuman
 router.get('/minuman', function(req, res, next) {
   const daftarMinuman = [
     { NamaMinuman: "Cappuccino", Varian: "Panas", Harga: "25.000" },
@@ -59,28 +60,24 @@ router.get('/minuman', function(req, res, next) {
   });
 });
 
-/* ========================
-   ENDPOINT JSON: MINUMAN
-======================== */
+// Endpoint JSON Data Minuman
 router.get("/minumans", (req, res) => {
   res.json({
-      status: "Success",
-      message: "Data Minuman",
-      data: [
+      "status": "Success",
+      "message": "Data Minuman",
+      "data": [
           { namaMinuman: "Cappuccino", harga: "25.000" },
           { namaMinuman: "Matcha Latte", harga: "30.000" }
       ]
   });
 });
 
-/* ========================
-   ENDPOINT JSON: PESANAN
-======================== */
+// Endpoint JSON Data Pesanan
 router.get("/pesanan", (req, res) => {
   res.json({
-      status: "Success",
-      message: "Data Pesanan",
-      data: [
+      "status": "Success",
+      "message": "Data Pesanan",
+      "data": [
           { namaPelanggan: "Alicia Putri", tanggal: "12 November 2024" },
           { namaPelanggan: "Bagas Wirawan", tanggal: "20 November 2024" },
           { namaPelanggan: "Sofia Umaroh", tanggal: "25 November 2024" }
@@ -88,24 +85,20 @@ router.get("/pesanan", (req, res) => {
   });
 });
 
-/* ========================
-   ENDPOINT JSON: PETUGAS
-======================== */
+// Endpoint JSON Data Petugas
 router.get("/petugas", (req, res) => {
   res.json({
-      status: "Success",
-      message: "Data Petugas",
-      data: [
-          { namaPetugas: "Budi Santoso", tugas: "Kasir" },      // 🔥 Nama diganti di sini
-          { namaPetugas: "Mira Anggraini", tugas: "Barista" },
+      "status": "Success",
+      "message": "Data Petugas",
+      "data": [
+          { namaPetugas: "Raka Pratama", tugas: "Barista" },
+          { namaPetugas: "Mira Anggraini", tugas: "Kasir" },
           { namaPetugas: "Dimas Saputra", tugas: "Pelayan" }
       ]
   });
 });
 
-/* ========================
-   ROUTE 404 NOT FOUND
-======================== */
+// 404 Not Found
 router.use("/", (req, res) => {
   res.send("<h1>404 Not Found</h1>");
 });
