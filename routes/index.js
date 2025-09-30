@@ -6,7 +6,7 @@ const router = express.Router();
 ======================== */
 router.get('/', (req, res) => {
   // 5 menu favorit
-  const menuFavorit = [
+  const minuman = [
     { nama: 'Cappuccino', deskripsi: 'Kopi dengan busa susu lembut' },
     { nama: 'Matcha Latte', deskripsi: 'Perpaduan teh hijau dan susu' },
     { nama: 'Espresso', deskripsi: 'Kopi pekat dengan rasa khas' },
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
   // Render halaman home.ejs
   res.render('home', { 
     title: 'Beranda Cafe', 
-    menuFavorit, 
+    minuman: minuman, 
     menuBaru 
   });
 });
@@ -37,6 +37,12 @@ router.get('/', (req, res) => {
 router.get('/contact', (req, res) => {
   res.render('contact', { 
     title: 'Hubungi Kami' 
+  });
+});
+
+router.get('/about', (req, res) => {
+  res.render('about', { 
+    title: 'About Us' 
   });
 });
 
