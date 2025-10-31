@@ -4,9 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressLayout = require('express-ejs-layouts');
+const connectDB = require('./api/models/db');
+
+// Connect to database
+connectDB();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const menuRouter = require('./api/routes/menuRoutes');
+const pesananRouter = require('./api/routes/pesananRoutes');
 
 var app = express();
 
@@ -21,8 +27,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayout);
 
+app.use('/api/menus', menuRouter);
+app.use('/api/pesanans', pesananRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+console.log('✅ Route /api/menus aktif');
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
